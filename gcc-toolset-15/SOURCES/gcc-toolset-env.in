@@ -1,0 +1,11 @@
+# Environment wrapper for GCC Toolset %{gts_ver}
+
+source %{_root_prefix}/lib/gcc-toolset/%{gts_ver}-env.source
+
+if [ -z $1 ]; then
+  cmd="/bin/sh"
+else
+  cmd=$*
+fi
+
+exec $cmd

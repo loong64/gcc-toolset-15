@@ -1,0 +1,17 @@
+diff --git a/libstdc++-v3/src/nonshared98/extfloat.S b/libstdc++-v3/src/nonshared98/extfloat.S
+index c6270e618..759d405bd 100644
+--- a/libstdc++-v3/src/nonshared98/extfloat.S
++++ b/libstdc++-v3/src/nonshared98/extfloat.S
+@@ -53,8 +53,11 @@
+ #elif defined __s390__
+ #define ALIGN1	.align 4
+ #define ALIGN3	.align 2
++#elif defined __loongarch64
++#define ALIGN1 .align 3
++#define ALIGN3 .align 3
+ #endif
+-#if defined __x86_64__ || defined __powerpc64__ || defined __s390x__ || defined __ia64__ || defined __aarch64__
++#if defined __x86_64__ || defined __powerpc64__ || defined __s390x__ || defined __ia64__ || defined __aarch64__ || defined __loongarch64
+ #define SIZE1	32
+ #define SIZE2	16
+ #define OFF	16
