@@ -4198,7 +4198,7 @@
 +} // namespace
 --- libstdc++-v3/src/nonshared11/cxx11-ios_failure80.cc.jj	2025-05-06 15:48:48.589748944 +0200
 +++ libstdc++-v3/src/nonshared11/cxx11-ios_failure80.cc	2025-05-06 15:48:48.589748944 +0200
-@@ -0,0 +1,50 @@
+@@ -0,0 +1,54 @@
 +// Copyright (C) 2012-2025 Free Software Foundation, Inc.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
@@ -4249,6 +4249,10 @@
 +asm (".hidden _ZTSNSt8ios_base7failureB5cxx11E");
 +asm (".hidden _ZTINSt8ios_base7failureB5cxx11E");
 +asm (".hidden _ZSt19__throw_ios_failurePKc");
++#ifndef __powerpc64__
++asm (".hidden _ZNSt12system_errorC1ESt10error_codePKc");
++asm (".hidden _ZNSt12system_errorC2ESt10error_codePKc");
++#endif
 --- libstdc++-v3/src/nonshared11/shared_ptr80.cc.jj	2025-05-06 15:48:48.589748944 +0200
 +++ libstdc++-v3/src/nonshared11/shared_ptr80.cc	2025-05-06 15:48:48.589748944 +0200
 @@ -0,0 +1,25 @@
@@ -4568,7 +4572,7 @@
 +#endif
 --- libstdc++-v3/src/nonshared20/tzdb110.cc.jj	2025-05-06 15:48:48.608748687 +0200
 +++ libstdc++-v3/src/nonshared20/tzdb110.cc	2025-05-06 17:51:28.532972148 +0200
-@@ -0,0 +1,34 @@
+@@ -0,0 +1,33 @@
 +// Copyright The GNU Toolchain Authors.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
@@ -4596,12 +4600,11 @@
 +asm (".hidden _ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED0Ev");
 +asm (".hidden _ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED1Ev");
 +asm (".hidden _ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED2Ev");
-+#ifndef __powerpc64__
-+asm (".hidden _ZSt23__atomic_wait_address_vIiZNKSt13__atomic_baseIiE4waitEiSt12memory_orderEUlvE_EvPKT_S4_T0_");
++#ifndef __i386__
++//asm (".hidden _ZSt23__atomic_wait_address_vIiZNKSt13__atomic_baseIiE4waitEiSt12memory_orderEUlvE_EvPKT_S4_T0_");
 +#endif
 +#ifdef __i386__
-+//asm (".hidden _ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPNSt6chrono14time_zone_linkESt6vectorIS3_SaIS3_EEEENS0_5__ops14_Val_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SN_");
-+asm (".hidden _ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPNSt6chrono9time_zoneESt6vectorIS3_SaIS3_EEEENS0_5__ops14_Val_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SN_");
++asm (".hidden _ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPNSt6chrono14time_zone_linkESt6vectorIS3_SaIS3_EEEENS0_5__ops14_Val_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SN_");
 +#endif
 --- libstdc++-v3/src/nonshared20/sstream-inst80.cc.jj	2025-05-06 15:48:48.608748687 +0200
 +++ libstdc++-v3/src/nonshared20/sstream-inst80.cc	2025-05-06 15:48:48.608748687 +0200
@@ -4840,9 +4843,6 @@
 +asm (".hidden _ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPNSt6chrono9time_zoneESt6vectorIS3_SaIS3_EEEENS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessESt8identityEEDaRT_RT0_EUlOSG_OSI_E_EEEvSG_SG_SI_");
 +asm (".hidden _ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPNSt6chrono14time_zone_linkESt6vectorIS3_SaIS3_EEEENS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessESt8identityEEDaRT_RT0_EUlOSG_OSI_E_EEEvSG_SG_SI_");
 +asm (".hidden _ZZNSt6ranges8__detail16__make_comp_projINS_4lessEMNSt6chrono9time_zoneEKDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_ENKUlOSB_OSD_E_clIRS4_SJ_EEbSF_SG_");
-+#ifndef __s390x__
-+//asm (".hidden _ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPNSt6chrono9time_zoneESt6vectorIS3_SaIS3_EEEENS0_5__ops14_Val_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SN_");
-+#endif
 +asm (".hidden _ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPNSt6chrono9time_zoneESt6vectorIS3_SaIS3_EEEENS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SL_SN_");
 +asm (".hidden _ZZNSt6ranges8__detail16__make_comp_projINS_4lessEMNSt6chrono14time_zone_linkEKDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_ENKUlOSB_OSD_E_clIRS4_SJ_EEbSF_SG_");
 +asm (".hidden _ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPNSt6chrono14time_zone_linkESt6vectorIS3_SaIS3_EEEENS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SL_SN_");
@@ -4866,7 +4866,9 @@
 +asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC2EPKcjRKS3_");
 +asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7reserveEj");
 +asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_mutateEjjPKcj");
-+//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEjjPKcj");
++#ifndef __i386__
++asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEjjPKcj");
++#endif
 +asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6appendEPKcj");
 +#else
 +asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1EPKcmRKS3_");
@@ -4877,6 +4879,7 @@
 +asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6appendEPKcm");
 +#endif
 +#ifdef __i386__
++asm (".hidden _ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPNSt6chrono9time_zoneESt6vectorIS3_SaIS3_EEEENS0_5__ops14_Val_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SN_");
 +asm (".hidden _ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPNSt6chrono14time_zone_linkESt6vectorIS3_SaIS3_EEEEiS3_NS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SN_SN_T1_T2_");
 +asm (".hidden _ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPNSt6chrono14time_zone_linkESt6vectorIS3_SaIS3_EEEEiS3_NS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessESt8identityEEDaRT_RT0_EUlOSG_OSI_E_EEEvSG_SI_SI_T1_T2_");
 +asm (".hidden _ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPNSt6chrono9time_zoneESt6vectorIS3_SaIS3_EEEEiS3_NS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SN_SN_T1_T2_");
@@ -4899,8 +4902,8 @@
 +#ifndef __i386__
 +asm (".hidden _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv");
 +#endif
-+#ifdef __i386__
-+//asm (".hidden _ZSt23__atomic_wait_address_vIiZNKSt13__atomic_baseIiE4waitEiSt12memory_orderEUlvE_EvPKT_S4_T0_");
++#ifndef __powerpc64__
++asm (".hidden _ZSt23__atomic_wait_address_vIiZNKSt13__atomic_baseIiE4waitEiSt12memory_orderEUlvE_EvPKT_S4_T0_");
 +#endif
 +asm (".hidden _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv");
 +asm (".hidden _ZNSt10unique_ptrINSt10filesystem7__cxx114path5_List5_ImplENS3_13_Impl_deleterEED2Ev");
@@ -5776,7 +5779,7 @@
 +asm (".hidden _ZNKSt6locale8encodingEv");
 +asm (".hidden _ZNSt13text_encoding11environmentEv");
 +asm (".hidden _ZNSt13text_encoding7_S_repsE");
-+#if defined(__s390x__)
++#ifdef __s390x__
 +asm (".hidden _ZNSt13text_encoding12_S_find_nameESt17basic_string_viewIcSt11char_traitsIcEE");
 +#endif
 --- libstdc++-v3/src/c++98/ios_failure.cc.jj	2025-04-17 12:55:03.460609249 +0200
@@ -7782,7 +7785,7 @@
  } // namespace std
 --- libstdc++-v3/src/nonshared17/floating_from_chars.cc.jj	2025-05-06 15:48:48.684747659 +0200
 +++ libstdc++-v3/src/nonshared17/floating_from_chars.cc	2025-05-06 15:48:48.684747659 +0200
-@@ -0,0 +1,51 @@
+@@ -0,0 +1,49 @@
 +// Copyright (C) 2019-2025 Free Software Foundation, Inc.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
@@ -7825,15 +7828,13 @@
 +//asm (".hidden _ZSt10from_charsIiENSt9enable_ifIXsrSt5__or_IIS1_IISt7is_sameINSt9remove_cvIT_E4typeEaES2_IS6_sES2_IS6_iES2_IS6_lES2_IS6_xEEES1_IIS2_IS6_hES2_IS6_tES2_IS6_jES2_IS6_mES2_IS6_yEEES2_IcS6_EEE5valueESt17from_chars_resultE4typeEPKcSP_RS4_i");
 +//asm (".hidden _ZSt10from_charsIiENSt9enable_ifIXsrSt5__or_IJS1_IJSt7is_sameINSt9remove_cvIT_E4typeEaES2_IS6_sES2_IS6_iES2_IS6_lES2_IS6_xEEES1_IJS2_IS6_hES2_IS6_tES2_IS6_jES2_IS6_mES2_IS6_yEEES2_IcS6_EEE5valueESt17from_chars_resultE4typeEPKcSP_RS4_i");
 +#endif
-+#if defined(__i386__) || (defined(__powerpc__) && !defined(__powerpc64__))
++#if defined(__i386__)
 +asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcENSt3pmr21polymorphic_allocatorIcEEE15_M_replace_coldEPcjPKcjj");
-+#elif !defined(__s390x__) && !defined(__aarch64__)
++#else
 +asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcENSt3pmr21polymorphic_allocatorIcEEE15_M_replace_coldEPcmPKcmm");
 +#endif
 +asm (".hidden _ZNSt8__detail31__from_chars_alnum_to_val_tableILb0EE5valueE");
-+#if !defined(__s390x__)
 +asm (".hidden _ZSt10from_charsIiLi0EESt17from_chars_resultPKcS2_RT_i");
-+#endif
 --- libstdc++-v3/src/nonshared17/floating_from_chars110.cc.jj	2025-05-06 15:48:48.684747659 +0200
 +++ libstdc++-v3/src/nonshared17/floating_from_chars110.cc	2025-05-06 15:48:48.684747659 +0200
 @@ -0,0 +1,45 @@
@@ -7884,7 +7885,7 @@
 +#endif
 --- libstdc++-v3/src/nonshared17/cow-fs_ops.cc.jj	2025-05-06 15:48:48.685747645 +0200
 +++ libstdc++-v3/src/nonshared17/cow-fs_ops.cc	2025-05-07 08:24:39.541661744 +0200
-@@ -0,0 +1,83 @@
+@@ -0,0 +1,91 @@
 +// Copyright (C) 2019-2025 Free Software Foundation, Inc.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
@@ -7924,7 +7925,6 @@
 +//asm (".hidden _ZSt8_DestroyISt15_Deque_iteratorINSt10filesystem4pathERS2_PS2_EEvT_S6_");
 +asm (".hidden _ZNSsC1ISaIcEEEPKcRKS0_");
 +asm (".hidden _ZNSsC2ISaIcEEEPKcRKS0_");
-+//asm (".hidden _ZNSs4swapERSs");
 +#ifndef __i386__
 +//asm (".hidden _ZNSs9_M_mutateEmmm");
 +asm (".hidden _ZNSt11_Deque_baseINSt10filesystem4pathESaIS1_EE17_M_initialize_mapEm");
@@ -7933,13 +7933,15 @@
 +asm (".hidden _ZNSt5dequeINSt10filesystem4pathESaIS1_EE23_M_new_elements_at_backEm");
 +asm (".hidden _ZNSt5dequeINSt10filesystem4pathESaIS1_EE24_M_new_elements_at_frontEm");
 +//asm (".hidden _ZNSs6resizeEmc");
-+//asm (".hidden _ZNSt10filesystem4pathD1Ev");
-+//asm (".hidden _ZNSt10filesystem4pathD2Ev");
 +asm (".hidden _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv");
 +#endif
 +#if defined(__x86_64__)
 +//asm (".hidden _ZSt13move_backwardISt15_Deque_iteratorINSt10filesystem4pathERS2_PS2_ES5_ET0_T_S7_S6_");
 +//asm (".hidden _ZSt4moveISt15_Deque_iteratorINSt10filesystem4pathERS2_PS2_ES5_ET0_T_S7_S6_");
++#endif
++#ifndef __powerpc64__
++asm (".hidden _ZNSt10filesystem4pathD1Ev");
++asm (".hidden _ZNSt10filesystem4pathD2Ev");
 +#endif
 +#ifdef __i386__
 +asm (".hidden _ZNSt11_Deque_baseINSt10filesystem4pathESaIS1_EE17_M_initialize_mapEj");
@@ -7952,9 +7954,17 @@
 +//asm (".hidden _ZSt13move_backwardISt15_Deque_iteratorINSt10filesystem4pathERS2_PS2_ES5_ET0_T_S7_S6_");
 +//asm (".hidden _ZSt4moveISt15_Deque_iteratorINSt10filesystem4pathERS2_PS2_ES5_ET0_T_S7_S6_");
 +#endif
-+#if defined(__s390x__)
++#if !defined(__s390x__)
 +//asm (".hidden _ZSt16__do_uninit_copyINSt10filesystem4path8iteratorESt15_Deque_iteratorIS1_RS1_PS1_EET0_T_S8_S7_");
 +//asm (".hidden _ZSt4copyINSt10filesystem4path8iteratorESt15_Deque_iteratorIS1_RS1_PS1_EET0_T_S8_S7_");
++asm (".hidden _ZNSt5dequeINSt10filesystem4pathESaIS1_EE6insertINS1_8iteratorEvEESt15_Deque_iteratorIS1_RS1_PS1_ES6_IS1_RKS1_PSA_ET_SE_");
++#endif
++#if defined(__s390x__)
++asm (".hidden _ZNSt19_UninitDestroyGuardISt15_Deque_iteratorINSt10filesystem4pathERS2_PS2_EvED1Ev");
++asm (".hidden _ZNSt19_UninitDestroyGuardISt15_Deque_iteratorINSt10filesystem4pathERS2_PS2_EvED2Ev");
++asm (".hidden _ZNSt5dequeINSt10filesystem4pathESaIS1_EE15_M_range_appendINS1_8iteratorES5_EEvT_T0_m");
++asm (".hidden _ZNSt5dequeINSt10filesystem4pathESaIS1_EE16_M_range_prependINS1_8iteratorES5_EEvT_T0_m");
++asm (".hidden _ZSt25__uninitialized_copy_moveINSt10filesystem4path8iteratorESt15_Deque_iteratorIS1_RS1_PS1_ES6_SaIS1_EET1_T_S9_T0_SA_S8_RT2_");
 +#endif
 +#ifdef __aarch64__
 +//asm (".hidden _ZSt4copyINSt10filesystem4path8iteratorESt15_Deque_iteratorIS1_RS1_PS1_EET0_T_S8_S7_");
@@ -7965,9 +7975,8 @@
 +#ifdef __powerpc64__
 +//asm (".hidden _ZSt16__do_uninit_copyINSt10filesystem4path8iteratorESt15_Deque_iteratorIS1_RS1_PS1_EET0_T_S8_S7_");
 +//asm (".hidden _ZSt4copyINSt10filesystem4path8iteratorESt15_Deque_iteratorIS1_RS1_PS1_EET0_T_S8_S7_");
-+//asm (".hidden _ZNSs4swapERSs");
 +#endif
-+asm (".hidden _ZNSt5dequeINSt10filesystem4pathESaIS1_EE6insertINS1_8iteratorEvEESt15_Deque_iteratorIS1_RS1_PS1_ES6_IS1_RKS1_PSA_ET_SE_");
++asm (".hidden _ZNSs4swapERSs");
 --- libstdc++-v3/src/nonshared17/eh_call.cc.jj	2025-05-06 15:48:48.685747645 +0200
 +++ libstdc++-v3/src/nonshared17/eh_call.cc	2025-05-06 15:48:48.685747645 +0200
 @@ -0,0 +1,23 @@
@@ -8040,7 +8049,7 @@
 +std::__shared_ptr<fs::recursive_directory_iterator::_Dir_stack>::operator bool () const noexcept;
 --- libstdc++-v3/src/nonshared17/cow-fs_path.cc.jj	2025-05-06 15:48:48.685747645 +0200
 +++ libstdc++-v3/src/nonshared17/cow-fs_path.cc	2025-05-07 08:25:37.285870805 +0200
-@@ -0,0 +1,134 @@
+@@ -0,0 +1,141 @@
 +// Copyright (C) 2019-2025 Free Software Foundation, Inc.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
@@ -8107,8 +8116,6 @@
 +asm (".hidden _ZNSt10filesystem16filesystem_error5_Impl9make_whatESt17basic_string_viewIcSt11char_traitsIcEEPKNS_4pathES8_");
 +asm (".hidden _ZNSt10unique_ptrINSt10filesystem4path5_List5_ImplENS2_13_Impl_deleterEED1Ev");
 +asm (".hidden _ZNSt10unique_ptrINSt10filesystem4path5_List5_ImplENS2_13_Impl_deleterEED2Ev");
-+//asm (".hidden _ZNSt12system_errorC1ESt10error_codeRKSs");
-+//asm (".hidden _ZNSt12system_errorC2ESt10error_codeRKSs");
 +asm (".hidden _ZNSt15__allocated_ptrISaISt23_Sp_counted_ptr_inplaceINSt10filesystem16filesystem_error5_ImplESaIS3_ELN9__gnu_cxx12_Lock_policyE2EEEED1Ev");
 +asm (".hidden _ZNSt15__allocated_ptrISaISt23_Sp_counted_ptr_inplaceINSt10filesystem16filesystem_error5_ImplESaIS3_ELN9__gnu_cxx12_Lock_policyE2EEEED2Ev");
 +asm (".hidden _ZNSt23_Sp_counted_ptr_inplaceINSt10filesystem16filesystem_error5_ImplESaIS2_ELN9__gnu_cxx12_Lock_policyE2EED2Ev");
@@ -8121,42 +8128,51 @@
 +//asm (".hidden _ZZNSt10filesystem4path10_S_convertIwEEDaPKT_S4_EN5_UCvtD1Ev");
 +//asm (".hidden _ZZNSt10filesystem4path10_S_convertIwEEDaPKT_S4_EN5_UCvtD2Ev");
 +//asm (".hidden _ZNKSt10filesystem4path5_List5_Impl4copyEv");
-+//asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE12_M_leak_hardEv");
-+//asm (".hidden _ZNSs12_M_leak_hardEv");
 +//asm (".hidden _ZNSs4swapERSs");
 +//asm (".hidden _ZNSs6appendERKSs");
-+//asm (".hidden _ZNSt10filesystem4path5_List5beginEv");
 +//asm (".hidden _ZNSt10filesystem4path7_Parser4nextEv");
 +#ifndef __i386__
 +asm (".hidden _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv");
 +//asm (".hidden _ZSt16__do_str_codecvtISbIwSt11char_traitsIwESaIwEEcSt7codecvtIwc11__mbstate_tES5_MS6_KFNSt12codecvt_base6resultERS5_PKcSB_RSB_PwSD_RSD_EEbPKT0_SJ_RT_RKT1_RT2_RmT3_");
-+//asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE6resizeEmw");
-+//asm (".hidden _ZNSs7reserveEm");
-+//asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE7reserveEm");
 +//asm (".hidden _ZNSsC1ERKSsmm");
-+//asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE9_M_mutateEmmm");
-+//asm (".hidden _ZNSs6insertEmPKcm");
-+//asm (".hidden _ZNSs6resizeEmc");
-+//asm (".hidden _ZNSs9_M_mutateEmmm");
 +//asm (".hidden _ZNSsC2ERKSsmm");
-+//asm (".hidden _ZNSt10filesystem4pathD1Ev");
-+//asm (".hidden _ZSt16__do_str_codecvtISswSt7codecvtIwc11__mbstate_tES1_MS2_KFNSt12codecvt_base6resultERS1_PKwS7_RS7_PcS9_RS9_EEbPKT0_SF_RT_RKT1_RT2_RmT3_");
 +#endif
-+#if defined(__aarch64__) || defined(__x86_64__)
-+//asm (".hidden _ZNSt10filesystem4pathD2Ev");
++#if defined(__x86_64__) || defined(__aarch64__) || defined(__s390x__)
++asm (".hidden _ZNSs6insertEmPKcm");
++asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE12_M_leak_hardEv");
++asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE6resizeEmw");
++asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE7reserveEm");
++asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE9_M_mutateEmmm");
++asm (".hidden _ZNSs12_M_leak_hardEv");
++asm (".hidden _ZNSs6resizeEmc");
++asm (".hidden _ZNSs7reserveEm");
++asm (".hidden _ZNSs9_M_mutateEmmm");
++asm (".hidden _ZNSt10filesystem4path5_List5beginEv");
++asm (".hidden _ZNSt10filesystem4pathD1Ev");
++asm (".hidden _ZNSt10filesystem4pathD2Ev");
++asm (".hidden _ZNSt12system_errorC1ESt10error_codeRKSs");
++asm (".hidden _ZNSt12system_errorC2ESt10error_codeRKSs");
++asm (".hidden _ZSt16__do_str_codecvtISswSt7codecvtIwc11__mbstate_tES1_MS2_KFNSt12codecvt_base6resultERS1_PKwS7_RS7_PcS9_RS9_EEbPKT0_SF_RT_RKT1_RT2_RmT3_");
 +#endif
 +#ifdef __i386__
-+//asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE6resizeEjw");
-+//asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE7reserveEj");
-+//asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE9_M_mutateEjjj");
-+//asm (".hidden _ZNSs6insertEjPKcj");
-+//asm (".hidden _ZNSs6resizeEjc");
-+//asm (".hidden _ZNSs7reserveEj");
-+//asm (".hidden _ZNSs9_M_mutateEjjj");
++asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE12_M_leak_hardEv");
++asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE6resizeEjw");
++asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE7reserveEj");
++asm (".hidden _ZNSbIwSt11char_traitsIwESaIwEE9_M_mutateEjjj");
++asm (".hidden _ZNSs12_M_leak_hardEv");
++asm (".hidden _ZNSs6insertEjPKcj");
++asm (".hidden _ZNSs6resizeEjc");
++asm (".hidden _ZNSs7reserveEj");
++asm (".hidden _ZNSs9_M_mutateEjjj");
++asm (".hidden _ZNSt10filesystem4path5_List5beginEv");
++asm (".hidden _ZNSt10filesystem4pathD1Ev");
++asm (".hidden _ZNSt10filesystem4pathD2Ev");
++asm (".hidden _ZNSt12system_errorC1ESt10error_codeRKSs");
++asm (".hidden _ZNSt12system_errorC2ESt10error_codeRKSs");
 +//asm (".hidden _ZNSsC1ERKSsjj");
 +//asm (".hidden _ZNSsC2ERKSsjj");
 +//asm (".hidden _ZSt16__do_str_codecvtISbIwSt11char_traitsIwESaIwEEcSt7codecvtIwc11__mbstate_tES5_MS6_KFNSt12codecvt_base6resultERS5_PKcSB_RSB_PwSD_RSD_EEbPKT0_SJ_RT_RKT1_RT2_RjT3_");
-+//asm (".hidden _ZSt16__do_str_codecvtISswSt7codecvtIwc11__mbstate_tES1_MS2_KFNSt12codecvt_base6resultERS1_PKwS7_RS7_PcS9_RS9_EEbPKT0_SF_RT_RKT1_RT2_RjT3_");
++asm (".hidden _ZSt16__do_str_codecvtISswSt7codecvtIwc11__mbstate_tES1_MS2_KFNSt12codecvt_base6resultERS1_PKwS7_RS7_PcS9_RS9_EEbPKT0_SF_RT_RKT1_RT2_RjT3_");
 +#endif
 +asm (".hidden _ZNSt10filesystem4path8_CodecvtIwED0Ev");
 +asm (".hidden _ZNSt10filesystem4path8_CodecvtIwED1Ev");
@@ -8242,12 +8258,12 @@
 +//asm (".hidden _ZNSt6vectorINSt3pmr15__pool_resource9_BigBlockENS0_21polymorphic_allocatorIS2_EEE17_M_realloc_insertIIRjS7_EEEvN9__gnu_cxx17__normal_iteratorIPS2_S5_EEDpOT_");
 +//asm (".hidden _ZNSt6vectorINSt3pmr15__pool_resource9_BigBlockENS0_21polymorphic_allocatorIS2_EEE17_M_realloc_insertIJRjS7_EEEvN9__gnu_cxx17__normal_iteratorIPS2_S5_EEDpOT_");
 +#endif
-+#ifdef __powerpc64__
++#ifndef __powerpc64__
 +//asm (".hidden _ZNSt3pmr15__pool_resource5_Pool10deallocateEPNS_15memory_resourceEPv");
++asm (".hidden _ZNSt22__shared_mutex_pthread6unlockEv");
 +#endif
-+//asm (".hidden _ZNSt22__shared_mutex_pthread6unlockEv");
-+#if defined(__i386__) || (defined(__powerpc__) && !defined(__powerpc64__))
-+asm (".hidden _ZNSt6vectorINSt3pmr15__pool_resource9_BigBlockENS0_21polymorphic_allocatorIS2_EEE17_M_realloc_appendIIRjS7_EEEvDpOT_");
++#if defined(__i386__)
++//asm (".hidden _ZNSt6vectorINSt3pmr15__pool_resource9_BigBlockENS0_21polymorphic_allocatorIS2_EEE17_M_realloc_appendIIRjS7_EEEvDpOT_");
 +asm (".hidden _ZNSt6vectorINSt3pmr15__pool_resource9_BigBlockENS0_21polymorphic_allocatorIS2_EEE17_M_realloc_appendIJRjS7_EEEvDpOT_");
 +#else
 +//asm (".hidden _ZNSt6vectorINSt3pmr15__pool_resource9_BigBlockENS0_21polymorphic_allocatorIS2_EEE17_M_realloc_appendIIRmS7_EEEvDpOT_");
@@ -8255,7 +8271,7 @@
 +#endif
 --- libstdc++-v3/src/nonshared17/fs_dir.cc.jj	2025-05-06 15:48:48.686747631 +0200
 +++ libstdc++-v3/src/nonshared17/fs_dir.cc	2025-05-07 08:16:13.911587479 +0200
-@@ -0,0 +1,103 @@
+@@ -0,0 +1,108 @@
 +// Copyright (C) 2019-2025 Free Software Foundation, Inc.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
@@ -8292,6 +8308,10 @@
 +asm (".hidden _ZNSt10filesystem7__cxx114_Dir7advanceEbRSt10error_code");
 +asm (".hidden _ZNSt10filesystem7__cxx114_DirD1Ev");
 +asm (".hidden _ZNSt10filesystem7__cxx114_DirD2Ev");
++#ifndef __powerpc64__
++asm (".hidden _ZNSt10filesystem7__cxx114pathC1INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES1_EERKT_NS1_6formatE");
++asm (".hidden _ZNSt10filesystem7__cxx114pathC2INSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES1_EERKT_NS1_6formatE");
++#endif
 +#ifdef __x86_64__
 +asm (".hidden _ZNSt10filesystem9_Dir_base7advanceEbRSt10error_code");
 +//asm (".hidden _ZNSt10filesystem9_Dir_baseC1EPKcbRSt10error_code");
@@ -8351,17 +8371,20 @@
 +asm (".hidden _ZNSt10unique_ptrINSt10filesystem7__cxx114path5_List5_ImplENS3_13_Impl_deleterEED2Ev");
 +#ifdef __i386__
 +asm (".hidden _ZNSt10filesystem9_Dir_base7advanceEbRSt10error_code");
++asm (".hidden _ZNSt5dequeINSt10filesystem7__cxx114_DirESaIS2_EE17_M_reallocate_mapEjb");
 +#endif
 +asm (".hidden _ZNKSt10filesystem7__cxx114_Dir11open_subdirEbbRSt10error_code");
 +asm (".hidden _ZNKSt10filesystem7__cxx1128recursive_directory_iterator10_Dir_stack12current_pathEv");
 +asm (".hidden _ZNSt10filesystem7__cxx1128recursive_directory_iterator7__eraseEPSt10error_code");
 +//asm (".hidden _ZNKSt10filesystem7__cxx114_Dir16dir_and_pathnameEv");
-+//asm (".hidden _ZNKSt10filesystem7__cxx114_Dir7currentEv");
++#ifndef __powerpc64__
++asm (".hidden _ZNKSt10filesystem7__cxx114_Dir7currentEv");
++#endif
 +//asm (".hidden _ZNSt10filesystem7__cxx114_DirC1ERKNS0_4pathEbbbRSt10error_code");
 +//asm (".hidden _ZNSt10filesystem7__cxx114_DirC2ERKNS0_4pathEbbbRSt10error_code");
 --- libstdc++-v3/src/nonshared17/fs_ops80.cc.jj	2025-05-06 15:48:48.686747631 +0200
 +++ libstdc++-v3/src/nonshared17/fs_ops80.cc	2025-05-07 08:26:54.435814071 +0200
-@@ -0,0 +1,105 @@
+@@ -0,0 +1,109 @@
 +// Copyright (C) 2019-2025 Free Software Foundation, Inc.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
@@ -8419,8 +8442,13 @@
 +//asm (".hidden _ZSt4moveISt15_Deque_iteratorINSt10filesystem7__cxx114pathERS3_PS3_ES6_ET0_T_S8_S7_");
 +#endif
 +#endif
-+#if defined(__s390x__) || defined(__powerpc64__)
++#if defined(__s390x__)
 +//asm (".hidden _ZSt13__copy_move_aILb0ENSt10filesystem7__cxx114path8iteratorESt15_Deque_iteratorIS2_RS2_PS2_EET1_T0_S9_S8_");
++asm (".hidden _ZNSt19_UninitDestroyGuardISt15_Deque_iteratorINSt10filesystem7__cxx114pathERS3_PS3_EvED1Ev");
++asm (".hidden _ZNSt19_UninitDestroyGuardISt15_Deque_iteratorINSt10filesystem7__cxx114pathERS3_PS3_EvED2Ev");
++asm (".hidden _ZNSt5dequeINSt10filesystem7__cxx114pathESaIS2_EE15_M_range_appendINS2_8iteratorES6_EEvT_T0_m");
++asm (".hidden _ZNSt5dequeINSt10filesystem7__cxx114pathESaIS2_EE16_M_range_prependINS2_8iteratorES6_EEvT_T0_m");
++asm (".hidden _ZSt25__uninitialized_copy_moveINSt10filesystem7__cxx114path8iteratorESt15_Deque_iteratorIS2_RS2_PS2_ES7_SaIS2_EET1_T_SA_T0_SB_S9_RT2_");
 +#endif
 +#ifdef __i386__
 +asm (".hidden _ZN9__gnu_cxx13stdio_filebufIcSt11char_traitsIcEEC1EiSt13_Ios_Openmodej");
@@ -8434,13 +8462,11 @@
 +#endif
 +#ifdef __aarch64__
 +//asm (".hidden _ZSt4copyINSt10filesystem7__cxx114path8iteratorESt15_Deque_iteratorIS2_RS2_PS2_EET0_T_S9_S8_");
-+//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4swapERS4_");
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6resizeEmc");
 +#endif
 +//asm (".hidden _ZNSt5dequeINSt10filesystem7__cxx114pathESaIS2_EE12emplace_backIIS2_EEERS2_DpOT_");
 +//asm (".hidden _ZNSt5dequeINSt10filesystem7__cxx114pathESaIS2_EE12emplace_backIJS2_EEERS2_DpOT_");
 +#ifdef __powerpc64__
-+//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4swapERS4_");
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6resizeEmc");
 +#endif
 +#ifndef __i386__
@@ -8450,12 +8476,10 @@
 +//asm (".hidden _ZSt16__do_uninit_copyINSt10filesystem7__cxx114path8iteratorESt15_Deque_iteratorIS2_RS2_PS2_EET0_T_S9_S8_");
 +//asm (".hidden _ZSt4copyINSt10filesystem7__cxx114path8iteratorESt15_Deque_iteratorIS2_RS2_PS2_EET0_T_S9_S8_");
 +#endif
-+#if defined(__x86_64__) || defined(__s390x__)
-+//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4swapERS4_");
++#if defined(__x86_64__)
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6resizeEmc");
 +#endif
 +#ifdef __i386__
-+//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4swapERS4_");
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6resizeEjc");
 +//asm (".hidden _ZSt13move_backwardISt15_Deque_iteratorINSt10filesystem7__cxx114pathERS3_PS3_ES6_ET0_T_S8_S7_");
 +//asm (".hidden _ZSt4moveISt15_Deque_iteratorINSt10filesystem7__cxx114pathERS3_PS3_ES6_ET0_T_S8_S7_");
@@ -8466,10 +8490,13 @@
 +asm (".hidden _ZNSt10filesystem18copy_file_sendfileEiim");
 +#endif
 +asm (".hidden _ZNSt10filesystem11equiv_filesEPKcRK4statS1_S4_RSt10error_code");
++#if !defined(__s390x__)
 +asm (".hidden _ZNSt5dequeINSt10filesystem7__cxx114pathESaIS2_EE6insertINS2_8iteratorEvEESt15_Deque_iteratorIS2_RS2_PS2_ES7_IS2_RKS2_PSB_ET_SF_");
++#endif
++asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4swapERS4_");
 --- libstdc++-v3/src/nonshared17/fs_path80.cc.jj	2025-05-06 15:48:48.686747631 +0200
 +++ libstdc++-v3/src/nonshared17/fs_path80.cc	2025-05-07 08:27:23.223419752 +0200
-@@ -0,0 +1,162 @@
+@@ -0,0 +1,167 @@
 +// Copyright (C) 2019-2025 Free Software Foundation, Inc.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
@@ -8559,12 +8586,13 @@
 +#endif
 +//asm (".hidden _ZNSt12_Destroy_auxILb0EE9__destroyIPNSt10filesystem7__cxx114path5_CmptEEEvT_S7_");
 +//asm (".hidden _ZNKSt10filesystem7__cxx114path5_List5_Impl4copyEv");
-+#if defined(__aarch64__) || defined(__s390x__)
-+//asm (".hidden _ZNSt10filesystem7__cxx114path5_List5beginEv");
-+//asm (".hidden _ZNSt10filesystem7__cxx114path7_Parser4nextEv");
-+#endif
 +#ifdef __aarch64__
 +asm (".hidden _ZNSt10filesystem7__cxx114path10_S_convertIwEEDaPKT_S5_"); // bad ppc64le
++asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm");
++asm (".hidden _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE6resizeEmw");
++asm (".hidden _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE9_M_mutateEmmPKwm");
++//asm (".hidden _ZNSt10filesystem7__cxx114path7_Parser4nextEv");
++//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6resizeEmc");
 +#endif
 +asm (".hidden _ZNSt10filesystem7__cxx114path8_CodecvtIwED2Ev");
 +asm (".hidden _ZNSt10filesystem7__cxx114path8_CodecvtIwED1Ev");
@@ -8586,34 +8614,37 @@
 +asm (".hidden _ZNSt12system_errorC2ESt10error_codeRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE");
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_assignERKS4_");
 +#ifndef __i386__
-+//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm");
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_appendEPKcm");
-+//asm (".hidden _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE6resizeEmw");
-+//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6resizeEmc");
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7reserveEm");
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_mutateEmmPKcm");
 +//asm (".hidden _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv");
 +//asm (".hidden _ZNSt12_Destroy_auxILb0EE9__destroyIPNSt10filesystem7__cxx114path5_CmptEEEvT_S7_");
 +//asm (".hidden _ZNKSt10filesystem7__cxx114path5_List5_Impl4copyEv");
 +#endif
-+#if  defined(__aarch64__) || defined(__x86_64__)
-+//asm (".hidden _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE9_M_mutateEmmPKwm");
-+#endif
 +#ifdef __powerpc64__
-+//asm (".hidden _ZNSt10filesystem7__cxx114path5_List5beginEv");
 +//asm (".hidden _ZNSt10filesystem7__cxx114path7_Parser4nextEv");
++#endif
++#ifdef __s390x__
++asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm");
++asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6resizeEmc");
++asm (".hidden _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE6resizeEmw");
 +#endif
 +#ifdef __x86_64__
-+//asm (".hidden _ZNSt10filesystem7__cxx114path5_List5beginEv");
++asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm");
++asm (".hidden _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE6resizeEmw");
++asm (".hidden _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE9_M_mutateEmmPKwm");
 +//asm (".hidden _ZNSt10filesystem7__cxx114path7_Parser4nextEv");
++asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6resizeEmc");
 +#endif
 +#ifdef __i386__
-+//asm (".hidden _ZNSt10filesystem7__cxx114path5_List5beginEv");
++asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEjjPKcj");
++asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6resizeEjc");
++asm (".hidden _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE9_M_mutateEjjPKwj");
 +//asm (".hidden _ZNSt10filesystem7__cxx114path7_Parser4nextEv");
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEjjPKcj");
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7reserveEj");
 +//asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_appendEPKcj");
-+//asm (".hidden _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE6resizeEjw");
++asm (".hidden _ZNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEE6resizeEjw");
 +#endif
 +asm (".hidden _ZNSt10filesystem7__cxx114path8_CodecvtIwED0Ev");
 +asm (".hidden _ZNSt10filesystem7__cxx114path8_CodecvtIwED1Ev");
@@ -8632,9 +8663,10 @@
 +asm (".hidden _ZNSt10filesystem7__cxx114path19preferred_separatorE");
 +asm (".hidden _ZNSt19_UninitDestroyGuardIPNSt10filesystem7__cxx114path5_CmptEvED1Ev");
 +asm (".hidden _ZNSt19_UninitDestroyGuardIPNSt10filesystem7__cxx114path5_CmptEvED2Ev");
++asm (".hidden _ZNSt10filesystem7__cxx114path5_List5beginEv");
 --- libstdc++-v3/src/nonshared17/cow-fs_dir.cc.jj	2025-05-06 15:48:48.687747618 +0200
 +++ libstdc++-v3/src/nonshared17/cow-fs_dir.cc	2025-05-07 08:16:13.899587643 +0200
-@@ -0,0 +1,107 @@
+@@ -0,0 +1,111 @@
 +// Copyright (C) 2019-2025 Free Software Foundation, Inc.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
@@ -8726,12 +8758,12 @@
 +asm (".hidden _ZNSt5dequeINSt10filesystem4_DirESaIS1_EE17_M_reallocate_mapEmb");
 +asm (".hidden _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv");
 +#endif
-+#ifndef __powerpc64__
-+asm (".hidden _ZNSt10unique_ptrINSt10filesystem4path5_List5_ImplENS2_13_Impl_deleterEED1Ev");
-+asm (".hidden _ZNSt10unique_ptrINSt10filesystem4path5_List5_ImplENS2_13_Impl_deleterEED2Ev");
++#if defined(__s390x__)
++//asm (".hidden _ZNSt10unique_ptrINSt10filesystem4path5_List5_ImplENS2_13_Impl_deleterEED1Ev");
++//asm (".hidden _ZNSt10unique_ptrINSt10filesystem4path5_List5_ImplENS2_13_Impl_deleterEED2Ev");
 +#endif
 +#ifdef __i386__
-+//asm (".hidden _ZNSt5dequeINSt10filesystem4_DirESaIS1_EE17_M_reallocate_mapEjb");
++asm (".hidden _ZNSt5dequeINSt10filesystem4_DirESaIS1_EE17_M_reallocate_mapEjb");
 +#endif
 +asm (".hidden _ZNKSt10filesystem4_Dir11open_subdirEbbRSt10error_code");
 +asm (".hidden _ZNKSt10filesystem28recursive_directory_iterator10_Dir_stack12current_pathEv");
@@ -8739,12 +8771,16 @@
 +//asm (".hidden _ZNSt10filesystem4pathC1ISsS0_EERKT_NS0_6formatE");
 +asm (".hidden _ZNSt10filesystem28recursive_directory_iterator7__eraseEPSt10error_code");
 +//asm (".hidden _ZNKSt10filesystem4_Dir16dir_and_pathnameEv");
-+//asm (".hidden _ZNSt10filesystem4pathD1Ev");
-+//asm (".hidden _ZNSt10filesystem4pathD2Ev");
-+//asm (".hidden _ZNKSt10filesystem4_Dir7currentEv");
++#ifndef __powerpc64__
++asm (".hidden _ZNKSt10filesystem4_Dir7currentEv");
++#endif
++#if defined (__x86_64__) || defined(__i386__) || defined(__s390x__)
++asm (".hidden _ZNSt10filesystem4pathD1Ev");
++asm (".hidden _ZNSt10filesystem4pathD2Ev");
++#endif
 --- libstdc++-v3/src/nonshared17/Makefile.am.jj	2025-05-06 15:48:48.687747618 +0200
 +++ libstdc++-v3/src/nonshared17/Makefile.am	2025-05-06 16:10:20.603262671 +0200
-@@ -0,0 +1,174 @@
+@@ -0,0 +1,155 @@
 +## Makefile for the C++17 sources of the GNU C++ Standard library.
 +##
 +## Copyright (C) 1997-2025 Free Software Foundation, Inc.
@@ -8839,25 +8875,6 @@
 +libnonshared17convenience110_la_SOURCES = $(sources110) $(inst_sources110)
 +libnonshared17convenience140_la_SOURCES = $(sources140) $(inst_sources140)
 +
-+if GLIBCXX_LDBL_ALT128_COMPAT
-+floating_from_chars.lo: floating_from_chars.cc
-+	$(LTCXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+floating_from_chars.o: floating_from_chars.cc
-+	$(CXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+floating_to_chars.lo: floating_to_chars.cc
-+	$(LTCXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+floating_to_chars.o: floating_to_chars.cc
-+	$(CXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+floating_from_chars110.lo: floating_from_chars110.cc
-+	$(LTCXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+floating_from_chars110.o: floating_from_chars110.cc
-+	$(CXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+floating_to_chars110.lo: floating_to_chars110.cc
-+	$(LTCXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+floating_to_chars110.o: floating_to_chars110.cc
-+	$(CXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+endif
-+
 +# AM_CXXFLAGS needs to be in each subdirectory so that it can be
 +# modified in a per-library or per-sub-library way.  Need to manually
 +# set this option because CONFIG_CXXFLAGS has to be after
@@ -8947,7 +8964,7 @@
 +#include "../c++17/cow-string-inst.cc"
 --- libstdc++-v3/src/nonshared17/Makefile.in.jj	2025-05-06 15:48:48.688747604 +0200
 +++ libstdc++-v3/src/nonshared17/Makefile.in	2025-05-07 10:09:21.643442963 +0200
-@@ -0,0 +1,871 @@
+@@ -0,0 +1,854 @@
 +# Makefile.in generated by automake 1.15.1 from Makefile.am.
 +# @configure_input@
 +
@@ -9799,23 +9816,6 @@
 +
 +vpath % $(top_srcdir)/src/nonshared17
 +
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@floating_from_chars.lo: floating_from_chars.cc
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@	$(LTCXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@floating_from_chars.o: floating_from_chars.cc
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@	$(CXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@floating_to_chars.lo: floating_to_chars.cc
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@	$(LTCXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@floating_to_chars.o: floating_to_chars.cc
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@	$(CXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@floating_from_chars110.lo: floating_from_chars110.cc
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@	$(LTCXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@floating_from_chars110.o: floating_from_chars110.cc
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@	$(CXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@floating_to_chars110.lo: floating_to_chars110.cc
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@	$(LTCXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@floating_to_chars110.o: floating_to_chars110.cc
-+@GLIBCXX_LDBL_ALT128_COMPAT_TRUE@	$(CXXCOMPILE) -mabi=ibmlongdouble $(LONG_DOUBLE_128_FLAGS) -c $<
-+
 +# Tell versions [3.59,3.63) of GNU make to not export all variables.
 +# Otherwise a system limit (for SysV at least) may be exceeded.
 +.NOEXPORT:
@@ -9875,7 +9875,7 @@
 +#include "../c++17/ostream-inst.cc"
 --- libstdc++-v3/src/nonshared17/floating_to_chars.cc.jj	2025-05-06 15:48:48.689747591 +0200
 +++ libstdc++-v3/src/nonshared17/floating_to_chars.cc	2025-05-07 08:26:03.148516563 +0200
-@@ -0,0 +1,101 @@
+@@ -0,0 +1,103 @@
 +// Copyright (C) 2019-2025 Free Software Foundation, Inc.
 +//
 +// This file is part of the GNU ISO C++ Library.  This library is free
@@ -9974,8 +9974,10 @@
 +asm (".hidden _ZNSt8__detail18__to_chars_10_implImEEvPcjT_");
 +#endif
 +#if !defined(__i386__) && !defined(__s390x__)
-+asm (".hidden _ZSt12__to_chars_iIoESt15to_chars_resultPcS1_T_i");
 +asm (".hidden _ZSt13__countl_zeroIoEiT_");
++#endif
++#if !defined(__i386__)
++asm (".hidden _ZSt12__to_chars_iIoESt15to_chars_resultPcS1_T_i");
 +#endif
 --- libstdc++-v3/src/nonshared17/cow-string-inst110.cc.jj	2025-05-06 15:48:48.689747591 +0200
 +++ libstdc++-v3/src/nonshared17/cow-string-inst110.cc	2025-05-06 15:48:48.689747591 +0200

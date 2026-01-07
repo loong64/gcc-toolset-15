@@ -322,7 +322,8 @@ Patch3015: 0018-Use-CXX11-ABI.patch
 Patch3017: 0020-more-fixes.patch
 Patch3018: 0021-libstdc++-disable-tests.patch
 
-Patch3019: 0022-LoongArch-support-nonshared-extfloat.diff
+Patch3019: 0021-LoongArch-Change-OSDIR-for-distribution.patch
+Patch3020: 0022-LoongArch-support-nonshared-extfloat.diff
 
 #%global nonsharedver 140
 %global nonsharedver 110
@@ -673,6 +674,7 @@ touch -r isl-0.24/m4/ax_prog_cxx_for_build.m4 isl-0.24/m4/ax_prog_cc_for_build.m
 %patch -P3017 -p1 -b .dts-test-17~
 %patch -P3018 -p1 -b .dts-test-18~
 %patch -P3019 -p1 -b .dts-test-19~
+%patch -P3020 -p1 -b .dts-test-20~
 
 find gcc/testsuite -name \*.pr96939~ | xargs rm -f
 
@@ -844,7 +846,7 @@ CONFIGURE_OPTS="\
 %ifarch ppc64le
 	--enable-targets=powerpcle-linux \
 %endif
-%ifarch ppc64le %{mips} s390x
+%ifarch ppc64le %{mips} s390x loongarch64
 	--disable-multilib \
 %else
 	--enable-multilib \
@@ -936,7 +938,7 @@ CONFIGURE_OPTS="\
 	--with-build-config=bootstrap-lto --enable-link-serialization=1 \
 %endif
 %ifarch loongarch64
-	--disable-multilib --disable-libquadmath --enable-tls --enable-default-pie \
+	--disable-libquadmath --enable-tls --enable-default-pie \
 %endif
 	"
 
