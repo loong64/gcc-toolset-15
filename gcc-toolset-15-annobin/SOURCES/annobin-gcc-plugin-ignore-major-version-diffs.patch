@@ -1,0 +1,15 @@
+--- annobin.orig/gcc-plugin/annobin.cc	2024-08-08 12:39:01.928844852 +0100
++++ annobin-12.65/gcc-plugin/annobin.cc	2024-08-08 12:42:07.333437024 +0100
+@@ -3218,9 +3218,10 @@ plugin_init (struct plugin_name_args *
+ 	 be sufficient.  [FIXME: It turns out that this is not entirely true...]  */
+       if (strncmp (version->basever, gcc_version.basever, strchr (version->basever, '.') - version->basever))
+ 	{
+-	  annobin_inform (INFORM_ALWAYS, "Error: plugin built for compiler version (%s) but run with compiler version (%s)",
++	  annobin_inform (INFORM_ALWAYS, "Warning: plugin built for compiler version (%s) but run with compiler version (%s) - disabling",
+ 			  gcc_version.basever, version->basever);
+-	  fail = true;
++	  enabled = false;
++	  return 0;
+ 	}
+ 
+       /* Since the plugin is not part of the gcc project, it is entirely

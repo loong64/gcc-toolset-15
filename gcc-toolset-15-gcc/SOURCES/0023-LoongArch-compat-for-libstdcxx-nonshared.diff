@@ -1,0 +1,114 @@
+diff --git a/libstdc++-v3/src/nonshared17/cow-fs_dir.cc b/libstdc++-v3/src/nonshared17/cow-fs_dir.cc
+index 0d4972c20..acc142976 100644
+--- a/libstdc++-v3/src/nonshared17/cow-fs_dir.cc
++++ b/libstdc++-v3/src/nonshared17/cow-fs_dir.cc
+@@ -96,7 +96,9 @@ asm (".hidden _ZNSt10unique_ptrINSt10filesystem4path5_List5_ImplENS2_13_Impl_del
+ #ifdef __i386__
+ //asm (".hidden _ZNSt5dequeINSt10filesystem4_DirESaIS1_EE17_M_reallocate_mapEjb");
+ #endif
++#ifndef __loongarch64
+ asm (".hidden _ZNKSt10filesystem4_Dir11open_subdirEbbRSt10error_code");
++#endif
+ asm (".hidden _ZNKSt10filesystem28recursive_directory_iterator10_Dir_stack12current_pathEv");
+ //asm (".hidden _ZNSt10filesystem4pathC2ISsS0_EERKT_NS0_6formatE");
+ //asm (".hidden _ZNSt10filesystem4pathC1ISsS0_EERKT_NS0_6formatE");
+diff --git a/libstdc++-v3/src/nonshared17/floating_from_chars.cc b/libstdc++-v3/src/nonshared17/floating_from_chars.cc
+index 9920908..a295288 100644
+--- a/libstdc++-v3/src/nonshared17/floating_from_chars.cc
++++ b/libstdc++-v3/src/nonshared17/floating_from_chars.cc
+@@ -42,7 +42,7 @@
+ #endif
+ #if defined(__i386__) || (defined(__powerpc__) && !defined(__powerpc64__))
+ asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcENSt3pmr21polymorphic_allocatorIcEEE15_M_replace_coldEPcjPKcjj");
+-#elif !defined(__s390x__) && !defined(__aarch64__)
++#elif !defined(__s390x__) && !defined(__aarch64__) && !defined(__loongarch64)
+ asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcENSt3pmr21polymorphic_allocatorIcEEE15_M_replace_coldEPcmPKcmm");
+ #endif
+ asm (".hidden _ZNSt8__detail31__from_chars_alnum_to_val_tableILb0EE5valueE");
+diff --git a/libstdc++-v3/src/nonshared17/floating_to_chars.cc b/libstdc++-v3/src/nonshared17/floating_to_chars.cc
+index 48dea55..e73ac7d 100644
+--- a/libstdc++-v3/src/nonshared17/floating_to_chars.cc
++++ b/libstdc++-v3/src/nonshared17/floating_to_chars.cc
+@@ -95,7 +95,7 @@ asm (".hidden _ZNSt8__detail18__to_chars_10_implIyEEvPcjT_");
+ #else
+ asm (".hidden _ZNSt8__detail18__to_chars_10_implImEEvPcjT_");
+ #endif
+-#if !defined(__i386__) && !defined(__s390x__)
++#if !defined(__i386__) && !defined(__s390x__) && !defined(__loongarch64)
+ asm (".hidden _ZSt12__to_chars_iIoESt15to_chars_resultPcS1_T_i");
+ asm (".hidden _ZSt13__countl_zeroIoEiT_");
+ #endif
+diff --git a/libstdc++-v3/src/nonshared17/floating_from_chars110.cc b/libstdc++-v3/src/nonshared17/floating_from_chars110.cc
+index 667777331..dd5fee009 100644
+--- a/libstdc++-v3/src/nonshared17/floating_from_chars110.cc
++++ b/libstdc++-v3/src/nonshared17/floating_from_chars110.cc
+@@ -28,7 +28,7 @@
+ #if defined(__i386__) || (defined(__powerpc__) && !defined(__powerpc64__))
+ asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcENSt3pmr21polymorphic_allocatorIcEEE15_M_replace_coldEPcjPKcjj");
+ asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcENSt3pmr21polymorphic_allocatorIcEEE9_M_mutateEjjPKcj");
+-#elif !defined(__s390x__) && !defined(__aarch64__)
++#elif !defined(__s390x__) && !defined(__aarch64__) && !defined(__loongarch64)
+ asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcENSt3pmr21polymorphic_allocatorIcEEE15_M_replace_coldEPcmPKcmm");
+ asm (".hidden _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcENSt3pmr21polymorphic_allocatorIcEEE9_M_mutateEmmPKcm");
+ asm (".hidden _ZSt10from_charsIiLi0EESt17from_chars_resultPKcS2_RT_i");
+diff --git a/libstdc++-v3/src/nonshared17/floating_to_chars110.cc b/libstdc++-v3/src/nonshared17/floating_to_chars110.cc
+index e7807d8..2b4b2d9 100644
+--- a/libstdc++-v3/src/nonshared17/floating_to_chars110.cc
++++ b/libstdc++-v3/src/nonshared17/floating_to_chars110.cc
+@@ -24,14 +24,14 @@
+ #include "../c++17/floating_to_chars.cc"
+ //asm (".hidden _ZSt12__to_chars_iIoENSt9enable_ifIXsrSt5__or_IJS1_IJSt7is_sameINSt9remove_cvIT_E4typeEaES2_IS6_sES2_IS6_iES2_IS6_lES2_IS6_xES2_IS6_nEEES1_IJS2_IS6_hES2_IS6_tES2_IS6_jES2_IS6_mES2_IS6_yES2_IS6_oEEES2_IcS6_EEE5valueESt15to_chars_resultE4typeEPcSQ_S4_i");
+ //asm (".hidden _ZSt12__to_chars_iIoENSt9enable_ifIXsrSt5__or_IIS1_IISt7is_sameINSt9remove_cvIT_E4typeEaES2_IS6_sES2_IS6_iES2_IS6_lES2_IS6_xES2_IS6_nEEES1_IIS2_IS6_hES2_IS6_tES2_IS6_jES2_IS6_mES2_IS6_yES2_IS6_oEEES2_IcS6_EEE5valueESt15to_chars_resultE4typeEPcSQ_S4_i");
+-#if !defined(__s390x__) && !defined(__aarch64__)
++#if !defined(__s390x__) && !defined(__aarch64__) && !defined(__loongarch64)
+ asm (".hidden _ZNSt8__detail18__to_chars_10_implIjEEvPcjT_");
+ #endif
+ #if defined(__s390x__)
+ asm (".hidden _ZNSt8__detail14__to_chars_lenIoEEjT_i");
+ asm (".hidden _ZNSt8__detail18__to_chars_10_implIoEEvPcjT_");
+ #endif
+-#if !defined(__i386__) && !defined(__s390x__)
++#if !defined(__i386__) && !defined(__s390x__) && !defined(__loongarch64)
+ asm (".hidden _ZSt12__to_chars_iIoESt15to_chars_resultPcS1_T_i");
+ asm (".hidden _ZSt13__countl_zeroIoEiT_");
+ #endif
+diff --git a/libstdc++-v3/src/nonshared17/fs_dir.cc b/libstdc++-v3/src/nonshared17/fs_dir.cc
+index 520a881ec..e5365b7b6 100644
+--- a/libstdc++-v3/src/nonshared17/fs_dir.cc
++++ b/libstdc++-v3/src/nonshared17/fs_dir.cc
+@@ -94,7 +94,9 @@ asm (".hidden _ZNSt10unique_ptrINSt10filesystem7__cxx114path5_List5_ImplENS3_13_
+ #ifdef __i386__
+ asm (".hidden _ZNSt10filesystem9_Dir_base7advanceEbRSt10error_code");
+ #endif
++#ifndef __loongarch64
+ asm (".hidden _ZNKSt10filesystem7__cxx114_Dir11open_subdirEbbRSt10error_code");
++#endif
+ asm (".hidden _ZNKSt10filesystem7__cxx1128recursive_directory_iterator10_Dir_stack12current_pathEv");
+ asm (".hidden _ZNSt10filesystem7__cxx1128recursive_directory_iterator7__eraseEPSt10error_code");
+ //asm (".hidden _ZNKSt10filesystem7__cxx114_Dir16dir_and_pathnameEv");
+diff --git a/libstdc++-v3/src/nonshared20/tzdb110.cc b/libstdc++-v3/src/nonshared20/tzdb110.cc
+index be084f4a1..bb6144d04 100644
+--- a/libstdc++-v3/src/nonshared20/tzdb110.cc
++++ b/libstdc++-v3/src/nonshared20/tzdb110.cc
+@@ -25,7 +25,7 @@
+ asm (".hidden _ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED0Ev");
+ asm (".hidden _ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED1Ev");
+ asm (".hidden _ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED2Ev");
+-#ifndef __powerpc64__
++#if !defined(__powerpc64__) && !defined(__loongarch64)
+ asm (".hidden _ZSt23__atomic_wait_address_vIiZNKSt13__atomic_baseIiE4waitEiSt12memory_orderEUlvE_EvPKT_S4_T0_");
+ #endif
+ #ifdef __i386__
+diff --git a/libstdc++-v3/src/nonshared20/tzdb80.cc b/libstdc++-v3/src/nonshared20/tzdb80.cc
+index 1a61b3cdd..a86a9b467 100644
+--- a/libstdc++-v3/src/nonshared20/tzdb80.cc
++++ b/libstdc++-v3/src/nonshared20/tzdb80.cc
+@@ -55,7 +55,7 @@ asm (".hidden _ZSt23__atomic_notify_addressIiEvPKT_b");
+ asm (".hidden _ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPNSt6chrono9time_zoneESt6vectorIS3_SaIS3_EEEENS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessESt8identityEEDaRT_RT0_EUlOSG_OSI_E_EEEvSG_SG_SI_");
+ asm (".hidden _ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPNSt6chrono14time_zone_linkESt6vectorIS3_SaIS3_EEEENS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessESt8identityEEDaRT_RT0_EUlOSG_OSI_E_EEEvSG_SG_SI_");
+ asm (".hidden _ZZNSt6ranges8__detail16__make_comp_projINS_4lessEMNSt6chrono9time_zoneEKDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_ENKUlOSB_OSD_E_clIRS4_SJ_EEbSF_SG_");
+-#ifndef __s390x__
++#if !defined(__s390x__) && !defined(__loongarch64)
+ //asm (".hidden _ZSt25__unguarded_linear_insertIN9__gnu_cxx17__normal_iteratorIPNSt6chrono9time_zoneESt6vectorIS3_SaIS3_EEEENS0_5__ops14_Val_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SN_");
+ #endif
+ asm (".hidden _ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPNSt6chrono9time_zoneESt6vectorIS3_SaIS3_EEEENS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessEMS3_KDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_EUlOSL_OSN_E_EEEvSL_SL_SN_");

@@ -109,7 +109,7 @@ BuildRequires: gcc-toolset-%{gts_ver}-devel
 %ifarch x86_64
 %global multilib_32_arch i686
 %endif
-%global build_annobin_plugin 0
+%global build_annobin_plugin 1
 Summary: GCC version %{gcc_major}
 Name: %{?scl_prefix}gcc
 Version: %{gcc_version}
@@ -785,7 +785,7 @@ CC="$CC" CXX="$CXX" CFLAGS="$OPT_FLAGS" \
 	--target nvptx-none --enable-as-accelerator-for=%{gcc_target_platform} \
 	--enable-languages=c,c++,fortran,lto \
 	--prefix=%{_prefix} --mandir=%{_mandir} --infodir=%{_infodir} \
-	--with-bugurl=http://bugzilla.redhat.com/bugzilla \
+	--with-bugurl=https://bugzilla.openanolis.cn \
 	--enable-checking=release --with-system-zlib \
 	--with-gcc-major-version-only --without-isl
 make %{?_smp_mflags}
@@ -841,7 +841,7 @@ offloadtgts=${offloadtgts:+${offloadtgts},}amdgcn-amdhsa
 # explicitly.
 CONFIGURE_OPTS="\
 	--prefix=%{_prefix} --mandir=%{_mandir} --infodir=%{_infodir} \
-	--with-bugurl=http://bugzilla.redhat.com/bugzilla \
+	--with-bugurl=https://bugzilla.openanolis.cn \
 	--enable-shared --enable-threads=posix --enable-checking=release \
 %ifarch ppc64le
 	--enable-targets=powerpcle-linux \
@@ -1036,6 +1036,9 @@ mkdir annobin-plugin
 cd annobin-plugin
 tar xf %{_scl_root}/%{_usrsrc}/annobin/latest-annobin.tar.xz
 cd annobin*
+cp /usr/lib/rpm/anolis/config.* ./config/ -rf
+cp /usr/lib/rpm/anolis/config.* ./gcc-plugin/ -rf
+sed -i 's/#if GCCPLUGIN_VERSION_MAJOR > 11/#if GCCPLUGIN_VERSION_MAJOR > 12/' gcc-plugin/annobin.cc
 touch aclocal.m4 configure Makefile.in */configure */config.h.in */Makefile.in
 ANNOBIN_FLAGS=../../obj-%{gcc_target_platform}/%{gcc_target_platform}/libstdc++-v3/scripts/testsuite_flags
 ANNOBIN_CFLAGS1="%build_cflags -I %{_builddir}/gcc-%{version}-%{DATE}/gcc"

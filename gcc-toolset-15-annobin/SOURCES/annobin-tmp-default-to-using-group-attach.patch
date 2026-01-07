@@ -1,0 +1,12 @@
+diff -rup annobin.orig/gcc-plugin/annobin.cc annobin-12.52/gcc-plugin/annobin.cc
+--- annobin.orig/gcc-plugin/annobin.cc	2024-05-02 12:11:35.628517293 +0100
++++ annobin-12.52/gcc-plugin/annobin.cc	2024-05-02 12:12:35.471570222 +0100
+@@ -3300,7 +3300,7 @@ plugin_init (struct plugin_name_args *
+ 	     versions that are needed.  (Note - 2.35.2, as used by RHEL-9, is insufficient).
+ 	     See BZ 2016458 for an example of where this solution is needed.  */
+ #if GCCPLUGIN_VERSION_MAJOR >= 12
+-	  annobin_attach_type = link_order;
++	  annobin_attach_type = group;
+ #else
+ 	  annobin_attach_type = group;
+ #endif

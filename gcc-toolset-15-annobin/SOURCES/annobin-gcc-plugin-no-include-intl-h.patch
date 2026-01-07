@@ -1,0 +1,11 @@
+--- annobin.orig/gcc-plugin/annobin.cc	2025-06-17 11:46:55.482221126 +0100
++++ annobin-12.93/gcc-plugin/annobin.cc	2025-06-17 11:47:07.389296765 +0100
+@@ -14,7 +14,7 @@
+ 
+ #include <stdarg.h>
+ #include <stdio.h>
+-#include <intl.h>
++
+ 
+ #include "annobin-common.h"
+ #include "annobin-global.h"
