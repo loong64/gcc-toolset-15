@@ -1,4 +1,4 @@
-%define anolis_release 3
+%define anolis_release 4
 
 %global have_scl_utils 1
 %global gts_ver 15
@@ -324,6 +324,7 @@ Patch3018: 0021-libstdc++-disable-tests.patch
 
 Patch3019: 0021-LoongArch-Change-OSDIR-for-distribution.patch
 Patch3020: 0022-LoongArch-support-nonshared-extfloat.diff
+Patch3021: 0023-LoongArch-compat-for-libstdcxx-nonshared.diff
 
 #%global nonsharedver 140
 %global nonsharedver 110
@@ -675,6 +676,7 @@ touch -r isl-0.24/m4/ax_prog_cxx_for_build.m4 isl-0.24/m4/ax_prog_cc_for_build.m
 %patch -P3018 -p1 -b .dts-test-18~
 %patch -P3019 -p1 -b .dts-test-19~
 %patch -P3020 -p1 -b .dts-test-20~
+%patch -P3021 -p1 -b .dts-test-21~
 
 find gcc/testsuite -name \*.pr96939~ | xargs rm -f
 
@@ -938,7 +940,10 @@ CONFIGURE_OPTS="\
 	--with-build-config=bootstrap-lto --enable-link-serialization=1 \
 %endif
 %ifarch loongarch64
-	--disable-libquadmath --enable-tls --enable-default-pie \
+	--disable-libquadmath \
+%endif
+%if 0%{?anolis:1}
+	--enable-host-pie --enable-host-bind-now \
 %endif
 	"
 
