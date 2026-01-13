@@ -1,5 +1,3 @@
-%define anolis_release 2
-
 %global __python /usr/bin/python3
 %global gts_ver 15
 %global scl gcc-toolset-%{gts_ver}
@@ -31,7 +29,7 @@ BuildRequires: scl-utils-build
 Summary: Package that installs %scl
 Name: %scl_name
 Version: %{gts_ver}.0
-Release: %{anolis_release}%{?dist}
+Release: 11%{?dist}
 License: GPLv2+
 Group: Applications/File
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)

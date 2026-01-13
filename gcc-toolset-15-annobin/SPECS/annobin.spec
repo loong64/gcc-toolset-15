@@ -1,5 +1,3 @@
-%define anolis_release 3
-
 %{?scl_package:%global scl gcc-toolset-15}
 %global scl_prefix gcc-toolset-15-
 BuildRequires: scl-utils-build
@@ -10,7 +8,7 @@ BuildRequires: scl-utils-build
 Name:    %{?scl_prefix}annobin
 Summary: Annotate and examine compiled binary files
 Version: 12.93
-Release: %{anolis_release}%{?dist}
+Release: 4%{?dist}
 License: GPL-3.0-or-later AND LGPL-2.0-or-later AND (GPL-2.0-or-later WITH GCC-exception-2.0) AND (LGPL-2.0-or-later WITH GCC-exception-2.0) AND GFDL-1.3-or-later
 URL: https://sourceware.org/annobin/
 # Maintainer: nickc@redhat.com

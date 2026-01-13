@@ -1,5 +1,3 @@
-%define anolis_release 4
-
 %global have_scl_utils 1
 %global gts_ver 15
 %{?scl_package:%global scl gcc-toolset-%{gts_ver}}
@@ -113,7 +111,7 @@ BuildRequires: gcc-toolset-%{gts_ver}-devel
 Summary: GCC version %{gcc_major}
 Name: %{?scl_prefix}gcc
 Version: %{gcc_version}
-Release: %{anolis_release}%{?dist}
+Release: %{gcc_release}.6%{?dist}
 # License notes for some of the less obvious ones:
 #   gcc/doc/cppinternals.texi: Linux-man-pages-copyleft-2-para
 #   isl: MIT, BSD-2-Clause

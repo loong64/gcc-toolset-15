@@ -1,5 +1,3 @@
-%define anolis_release 2
-
 %global have_scl_utils 1
 
 %global gts_ver 15
@@ -22,7 +20,7 @@ Name: %{?scl_prefix}binutils
 # The variable %%{source} (see below) should be set to indicate which of these
 # origins is being used.
 Version: 2.44
-Release: %{anolis_release}%{?dist}
+Release: 8%{?dist}
 License: GPL-3.0-or-later AND (GPL-3.0-or-later WITH Bison-exception-2.2) AND (LGPL-2.0-or-later WITH GCC-exception-2.0) AND BSD-3-Clause AND GFDL-1.3-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later
 URL: https://sourceware.org/binutils
 
