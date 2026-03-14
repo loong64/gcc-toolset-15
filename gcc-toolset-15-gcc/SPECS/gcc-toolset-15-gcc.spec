@@ -1860,7 +1860,7 @@ cp -a %{gcc_target_platform}/libstdc++-v3/src/.libs/libstdc++_nonshared%{nonshar
 
 # run the tests.
 LC_ALL=C make %{?_smp_mflags} -k check ALT_CC_UNDER_TEST=gcc ALT_CXX_UNDER_TEST=g++ \
-     RUNTESTFLAGS="--target_board=unix/'{,-fstack-protector-strong}'" || :
+RUNTESTFLAGS="--target_board=unix/'{,-fstack-protector-strong}'" || :
 ( LC_ALL=C ../contrib/test_summary -t || : ) 2>&1 | sed -n '/^cat.*EOF/,/^EOF/{/^cat.*EOF/d;/^EOF/d;/^LAST_UPDATED:/d;p;}' > testresults
 rm -rf gcc/testsuite.prev
 mv gcc/testsuite{,.prev}
