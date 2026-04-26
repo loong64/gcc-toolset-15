@@ -103,7 +103,17 @@ diff --git a/libstdc++-v3/src/nonshared20/tzdb80.cc b/libstdc++-v3/src/nonshared
 index 1a61b3cdd..a86a9b467 100644
 --- a/libstdc++-v3/src/nonshared20/tzdb80.cc
 +++ b/libstdc++-v3/src/nonshared20/tzdb80.cc
-@@ -55,7 +55,7 @@ asm (".hidden _ZSt23__atomic_notify_addressIiEvPKT_b");
+@@ -28,7 +28,9 @@
+ asm (".hidden _ZNSt23_Sp_counted_ptr_inplaceINSt6chrono9tzdb_list5_NodeESaIvELN9__gnu_cxx12_Lock_policyE2EED0Ev");
+ asm (".hidden _ZNSt23_Sp_counted_ptr_inplaceINSt6chrono9tzdb_list5_NodeESaIvELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv");
+ asm (".hidden _ZNSt23_Sp_counted_ptr_inplaceINSt6chrono9tzdb_list5_NodeESaIvELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info");
++#ifndef __loongarch64
+ asm (".hidden _ZNKSt6chrono14year_month_day19_M_days_since_epochEv");
++#endif
+ asm (".hidden _ZNSt6chronossERKNS_14time_zone_linkES2_");
+ asm (".hidden _ZNSt6chrono9time_zoneC2ESt10unique_ptrINS0_5_ImplESt14default_deleteIS2_EE");
+ asm (".hidden _ZNSt6chrono9time_zoneC1ESt10unique_ptrINS0_5_ImplESt14default_deleteIS2_EE");
+@@ -55,7 +57,7 @@
  asm (".hidden _ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPNSt6chrono9time_zoneESt6vectorIS3_SaIS3_EEEENS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessESt8identityEEDaRT_RT0_EUlOSG_OSI_E_EEEvSG_SG_SI_");
  asm (".hidden _ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPNSt6chrono14time_zone_linkESt6vectorIS3_SaIS3_EEEENS0_5__ops15_Iter_comp_iterIZNSt6ranges8__detail16__make_comp_projINSB_4lessESt8identityEEDaRT_RT0_EUlOSG_OSI_E_EEEvSG_SG_SI_");
  asm (".hidden _ZZNSt6ranges8__detail16__make_comp_projINS_4lessEMNSt6chrono9time_zoneEKDoFSt17basic_string_viewIcSt11char_traitsIcEEvEEEDaRT_RT0_ENKUlOSB_OSD_E_clIRS4_SJ_EEbSF_SG_");

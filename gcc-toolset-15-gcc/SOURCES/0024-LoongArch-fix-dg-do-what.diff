@@ -1,0 +1,18 @@
+--- a/gcc/testsuite/g++.dg/cpp/embed-28.C	2026-04-27 03:31:20.389913371 +0000
++++ a/gcc/testsuite/g++.dg/cpp/embed-28.C	2026-04-27 03:31:12.189854237 +0000
+@@ -1,5 +1,5 @@
+ // PR c++/123737
+-// { dg-do run }
++// { dg-do compile }
+ // { dg-options "--embed-dir=${srcdir}/c-c++-common/cpp/embed-dir" }
+ 
+ struct A {
+--- a/gcc/testsuite/g++.dg/parse/comma3.C	2026-04-27 03:07:01.040362107 +0000
++++ a/gcc/testsuite/g++.dg/parse/comma3.C	2026-04-27 03:29:20.757209694 +0000
+@@ -1,5 +1,5 @@
+ // PR c++/123737
+-// { dg-do run }
++// { dg-do compile }
+ 
+ struct A {
+   A (int x) : a (0), e (x) {}

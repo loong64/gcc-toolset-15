@@ -1,0 +1,33 @@
+From 80709e422ee33977d9e50eb18a03a537afee5d6f Mon Sep 17 00:00:00 2001
+From: Lulu Cheng <chenglulu@loongson.cn>
+Date: Thu, 20 Feb 2025 11:00:49 +0800
+Subject: [PATCH 01/20] LoongArch: Remove the definition of the macro
+ LOGICAL_OP_NON_SHORT_CIRCUIT under the architecture and use the
+ defaultdefinition instead.
+
+In some cases, setting this macro as the default can reduce the number of conditional
+branch instructions.
+
+gcc/ChangeLog:
+
+  * config/loongarch/loongarch.h (LOGICAL_OP_NON_SHORT_CIRCUIT): Remove the macro
+  definition.
+---
+ gcc/config/loongarch/loongarch.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/gcc/config/loongarch/loongarch.h b/gcc/config/loongarch/loongarch.h
+index 6be1029be..4efe23059 100644
+--- a/gcc/config/loongarch/loongarch.h
++++ b/gcc/config/loongarch/loongarch.h
+@@ -868,7 +868,6 @@ typedef struct {
+    1 is the default; other values are interpreted relative to that.  */
+ 
+ #define BRANCH_COST(speed_p, predictable_p) la_branch_cost
+-#define LOGICAL_OP_NON_SHORT_CIRCUIT 0
+ 
+ /* Return the asm template for a conditional branch instruction.
+    OPCODE is the opcode's mnemonic and OPERANDS is the asm template for
+-- 
+2.43.0
+
